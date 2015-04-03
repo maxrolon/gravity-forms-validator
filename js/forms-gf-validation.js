@@ -128,7 +128,7 @@ jQuery(function($){
 			}
 		}
 	}
-	//w.GFValidator.addMethod('')
+	
 	/*
 	 * This method allows a user of the plugin
 	 * to add a method to the validator after the 
@@ -291,7 +291,9 @@ jQuery(function($){
 	}
 	
 	/*
-	 * 
+	 * Sends an Ajax call to the server with action supplied
+	 * and upon reception of the message, displays it in the 
+	 * DOM
 	 * @params	void
 	 * @returns	void
 	 *
