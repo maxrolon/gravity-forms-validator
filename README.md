@@ -18,20 +18,23 @@ This code can be found at the bottom of the plugin javascript file. These lines 
 ```javascript
 var settings = {
 	message:true, //Do you want to show a validation message to the user?
-	messageAction: 'gf_notifcation_message', //If message=true, this is the name of the wordpress action to handle the AJAX request
+	messageAction: 'gf_notifcation_message', //If message=true, this is the name of the Wordpress action to handle the AJAX request
 	emailValidationClass: 'email' //The class name to attach to a Gravity Forms form field to trigger email validation
 }
 	
 $('form[id^="gform_"]').GFValidator(settings);
 ```
 ### Showing a message to the user
-If you'd like to show a error message to the user, the plugin can get that message text via AJAX. In order to do this, see the code example below:
+If you'd like to show a error message to the user, the plugin can get that message text via AJAX. In order to do this, see the PHP code example below (the ```messageAction``` setting is set to ```gf_notifcation_message```). This code can be placed in a Wordpress theme's functions.php file. Note: Requiring the message this way allows you to retrieve the message from the database. Handy if you use a tool like [ACF](http://www.advancedcustomfields.com/).
 ```php
 add_action('wp_ajax_nopriv_gf_notifcation_message', 'gf_validation_method', 5);
 add_action('wp_ajax_gf_notifcation_message', 'gf_validation_method', 5);
 
 function localize_gf_validation_method($validation_message=false,$form=false){
 	$is_ajax = (isset($_POST['ajax']) && (string) $_POST['ajax'] == '1');
+	$message = 'This is your message';
+	echo json_encode($message);
+	exit;
 }
 
 ```
@@ -46,4 +49,4 @@ window.GFValidator.addMethod('test',function(el){
 	return true;
 });
 ```
-In the example below, any Gravity Form field with class 'test' added to it, will need to passed to the callback validation closure. The closure will need to return true for the input's value to be deemed as valid. Note: Purposefully, any methods added this way will be attached to the plugin object's prototype and thus will be accessible by all instances of the plugin (if there are two forms on the page, both will be able to use this validation method simultaneuosly)
+In the example below, any Gravity Form field with class 'test' added to it, will need to passed to the callback validation closure. The closure will need to return true for the input's value to be deemed as valid. Note: Purposefully, any methods added this way will be attached to the plugin object's prototype and thus will be accessible by all instances of the plugin (if there are two forms on the page, both will be able to use this validation method simultaneously)
