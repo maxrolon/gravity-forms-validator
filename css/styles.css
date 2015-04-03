@@ -1,0 +1,41 @@
+/**
+ * ==========================
+ * Example Styles 
+ * ==========================
+ * 
+ * As the plugin simply adds or substracts a CSS class
+ * from the invalid input container, you can apply
+ * any styles you want to the input. Below is a very
+ * basic example (with no CSS3 browser prefixes)
+ *
+ */
+
+.gfield input{
+	border: 2px solid transparent;
+	transition: border 300ms linear 0s;
+}
+
+.gfield_error input{border: 2px solid #fff}
+
+/*
+ * Because I don't like the default spinner
+ */
+[id^="gform_ajax_spinner"]{display: none}
+.submittable [id^="gform_ajax_spinner"]{display: inline-block}
+
+.validation_error{
+	overflow: hidden;
+	max-height: 500px;
+	transform: translateX(0px);
+	opacity: 1;
+	transition: 
+		max-height 100ms linear 0s,
+		opacity 300ms linear 100ms,
+		transform 200ms linear 100ms;
+}
+
+.validation_error.hide{
+	max-height: 0;
+	opacity:0;
+	transform: translateX(-10px);
+}
