@@ -1,5 +1,5 @@
 # Gravity Forms Validator
-Javascript validation for an enhanced Gravity Forms experience
+Javascript validation for an enhanced Gravity Forms experience.
 
 This is a very simple jQuery plugin designed to sit on top of the functionality that [Gravity Forms](http://www.gravityforms.com/) provides as a Wordpress Plugin. To aims to provide the user with instant form field validity feedback so that form/s don't have to send a request to the server to determine if form data has been inputted correctly. Rather than integrating directly with Gravity Forms, this plugin can be dropped in and is auto-instantiated based on Gravity Forms form container class naming conventions. 
 
@@ -49,4 +49,4 @@ window.GFValidator.addMethod('test',function(el){
 	return true;
 });
 ```
-In the example below, any Gravity Form field with class 'test' added to it, will need to passed to the callback validation closure. The closure will need to return true for the input's value to be deemed as valid. Note: Purposefully, any methods added this way will be attached to the plugin object's prototype and thus will be accessible by all instances of the plugin (if there are two forms on the page, both will be able to use this validation method simultaneously)
+In the example below, any Gravity Forms field with class 'test' attached to it, will be passed to the callback validation closure. The closure will need to return true for the input's value to be deemed as valid. Note: Purposefully, any methods added this way will be attached to the plugin object's prototype and thus will be accessible by all instances of the plugin (if there are two forms on the page, both will be able to use this validation method simultaneously).
